@@ -4,9 +4,9 @@ A beginner-friendly React mini project demonstrating **CSS Modules**, component-
 
 ---
 
-## 1. Project Overview
+## 1. Practical Overview
 
-**Project Name:** StudentHub — Student Dashboard
+**Practical Name:** StudentHub — Student Dashboard(Just basic understanding)
 
 **Technology Used:**
 - React.js
@@ -16,7 +16,7 @@ A beginner-friendly React mini project demonstrating **CSS Modules**, component-
 - CSS3
 - Vite
 
-**Project Features:**
+**Practical Features:**
 - Responsive-style navigation layout
 - Student profile card
 - Skill badges
