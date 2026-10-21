@@ -889,11 +889,4 @@ The most important concepts to remember are:
 **Learning outcome:** You should be able to create a responsive React interface, style it using Tailwind utility classes, and render repeated UI elements using reusable components and data arrays.
 
 ---
-
-\<p align="center">
-&#x20; \<strong>💻 Keep Practising • Keep Building • Keep Learning 🚀\</strong>
-\</p>
-
-\<p align="center">
-&#x20; React Learning Repository — \<a href="[https://github.com/HinguJay27/React](https://github.com/HinguJay27/React)">HinguJay27/React\</a>
-\</p>
+💻 Keep Practising • Keep Building • Keep Learning 🚀
