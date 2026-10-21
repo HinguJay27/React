@@ -1,16 +1,22 @@
+
 import React from 'react'
+import { ArrowUpRight } from 'lucide-react'
 
 const Navbar = () => {
   return (
-    <div className="flex items-center justify-between px-8 py-18">
-        <h4 className="bg-black text-white uppercase px-6 py-2 rounded-full ">
-            Target Audience
-        </h4>
-        <button className="bg-gray-300 text-black uppercase px-6 py-2 rounded-full text-sm">
-            Digital Branding Platform
-        </button>
-        
-    </div>
+    <nav className="flex flex-col gap-4 border-b border-white/20 pb-5 sm:flex-row sm:items-center sm:justify-between">
+      <span className="w-fit rounded-full bg-white px-5 py-2 text-xs font-bold uppercase tracking-wider text-cyan-950 sm:text-sm">
+        Target Audience
+      </span>
+
+      <a
+        href="#audience-cards"
+        className="flex w-fit items-center gap-2 rounded-full border border-white/30 px-5 py-2 text-xs font-medium uppercase tracking-wide transition hover:bg-white hover:text-cyan-950 sm:text-sm"
+      >
+        Digital Branding Platform
+        <ArrowUpRight size={16} />
+      </a>
+    </nav>
   )
 }
 
