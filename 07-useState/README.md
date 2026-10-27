@@ -1,5 +1,5 @@
 
-# 🎓 React Module 4: State and Events
+# 🎓 React Module 7: State and Events
 
 
   React Student Dashboard — Practical Project
@@ -10,7 +10,7 @@
 
 ## 📌 About This Module
 
-Module 4 focuses on **State and Events in React**. These concepts help us build interactive applications that respond to user actions.
+Module 7 focuses on **State and Events in React**. These concepts help us build interactive applications that respond to user actions.
 
 In this module, we learn how to store data in a component, update that data, handle user interactions, and display updated information without manually manipulating the DOM.
 
@@ -453,7 +453,7 @@ A future version could use a backend API and a database to store student informa
 ---
 
 
-# 5. 🎤 React Module 4 Interview Questions and Answers
+# 5. 🎤 React Module 7 Interview Questions and Answers
 
 ## Q1. What is state in React?
 
@@ -614,7 +614,7 @@ const activeStudents = students.filter(
 
 ---
 
-# 6. 📖 Module 4 Quick Revision
+# 6. 📖 Module 7 Quick Revision
 
 | Concept | Remember |
 |---|---|
@@ -638,7 +638,7 @@ const activeStudents = students.filter(
 ---
 
 
-## 🎉 Module 4 Completed!
+## 🎉 Module 7 Completed!
 
 practiced the core React concepts required to build interactive applications.
 
