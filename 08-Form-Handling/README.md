@@ -194,15 +194,7 @@ npm run dev
 
 **Step 4:** Open the local URL displayed in the terminal, usually `http://localhost:5173`.
 
-## 💻 Practice Tasks
 
-- [ ] Add a phone number field.
-- [ ] Add a gender dropdown.
-- [ ] Add a password field.
-- [ ] Validate all required fields.
-- [ ] Add a Reset button.
-- [ ] Display an appropriate success message.
-- [ ] Improve the form's responsive CSS.
 
 ## 🎤 Interview Questions and Answers
 
