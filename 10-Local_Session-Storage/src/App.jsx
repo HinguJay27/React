@@ -1,122 +1,121 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [username, setUsername] = useState(
+    () => localStorage.getItem("username") || ""
+  );
+
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light"
+  );
+
+  const [language, setLanguage] = useState(
+    () => localStorage.getItem("language") || "English"
+  );
+
+  const [loggedIn, setLoggedIn] = useState(
+    () => sessionStorage.getItem("loggedIn") === "true"
+  );
+
+  // Save preferences in Local Storage
+  useEffect(() => {
+    localStorage.setItem("username", username);
+    localStorage.setItem("theme", theme);
+    localStorage.setItem("language", language);
+  }, [username, theme, language]);
+
+  // Save login status in Session Storage
+  useEffect(() => {
+    sessionStorage.setItem("loggedIn", String(loggedIn));
+  }, [loggedIn]);
+
+  // Clear preferences
+  const resetPreferences = () => {
+    setUsername("");
+    setTheme("light");
+    setLanguage("English");
+    setLoggedIn(false);
+
+    localStorage.removeItem("username");
+    localStorage.removeItem("theme");
+    localStorage.removeItem("language");
+  };
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className={`container ${theme}`}>
+      <div className="card">
+        <h1>User Preferences</h1>
+        <p className="subtitle">
+          Manage your personal settings
+        </p>
+
+        <div className="section">
+          <h2>Profile Settings</h2>
+
+          <label>Username</label>
+          <input
+            type="text"
+            placeholder="Enter your name"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </div>
-        <div>
-          <h1>Get started</h1>
+
+        <div className="section">
+          <h2>Appearance</h2>
+
+          <label>Select Theme</label>
+          <select
+            value={theme}
+            onChange={(e) => setTheme(e.target.value)}
+          >
+            <option value="light">Light Mode</option>
+            <option value="dark">Dark Mode</option>
+          </select>
+        </div>
+
+        <div className="section">
+          <h2>Language Settings</h2>
+
+          <label>Select Language</label>
+          <select
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+          >
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+          </select>
+        </div>
+
+        <div className="section">
+          <h2>Session Settings</h2>
+
           <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+            Status: {loggedIn ? "Logged In" : "Logged Out"}
           </p>
+
+          <button
+            onClick={() => setLoggedIn(!loggedIn)}
+          >
+            {loggedIn ? "Logout" : "Login"}
+          </button>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
+
+        <div className="welcome">
+          <h3>
+            Welcome, {username || "Guest"}!
+          </h3>
+          <p>Selected Language: {language}</p>
+          <p>Current Theme: {theme}</p>
+        </div>
+
+        <button className="reset" onClick={resetPreferences}>
+          Reset Preferences
         </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
