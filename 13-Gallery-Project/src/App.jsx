@@ -1,21 +1,66 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import Card from './components/Card';
 
 const App = () => {
 
-  const getData = async () => {
-    
-    const response = await axios.get('https://picsum.photos/v2/list?page=2&limit=15')
+  const [userData, setUserData] = useState([]);
 
-    console.log(response.data)
+  const [index, setIndex] = useState(1)
+
+  const getData = async () => {
+    const response = await axios.get(`https://picsum.photos/v2/list?page=${index}&limit=21`)
+    setUserData(response.data)
   }
+
+  useEffect(function () {
+    getData()
+  }, [index])
+
+
+  let printUserData = <h3 className='text-gray-300 text-xs absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-semibold'>Loading...</h3>
+
+  if (userData.length > 0) {
+    printUserData = userData.map(function (elem, idx) {
+
+      return <div key={idx}>
+        <Card elem={elem} />
+      </div>
+    })
+  }
+
   return (
-    <div className='bg-black h-screen text-white'>
-        <button 
-          onClick={getData}
-          className='bg-green-500 text-shadow-indigo-200 h-10 w-32 rounded-2xl m-5 active:scale-95'>
-          Get data
+    <div className='bg-black overflow-auto h-screen p-4 text-white'>
+      <div className='flex h-[98%] flex-wrap gap-4 p-2'>
+        {printUserData}
+      </div>
+
+      <div className='flex justify-center gap-6 items-center p-4'>
+        <button
+          style={{ opacity: index == 1 ? 0.6 : 1 }}
+          className='bg-amber-400 text-sm cursor-pointer active:scale-95 text-black rounded px-4 py-2 font-semibold'
+          onClick={() => {
+            if (index > 1) {
+              setIndex(index - 1)
+              setUserData([])
+            }
+          }}
+        >
+          Prev
         </button>
+        <h4>Page {index}</h4>
+        <button
+          className='bg-amber-400 text-sm cursor-pointer active:scale-95 text-black rounded px-4 py-2 font-semibold'
+          onClick={() => {
+            setUserData([])
+
+            setIndex(index + 1)
+
+          }}
+        >
+          Next
+        </button>
+      </div>
     </div>
   )
 }
