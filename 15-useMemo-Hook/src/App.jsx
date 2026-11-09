@@ -1,40 +1,53 @@
-import React, { useState } from 'react';
+import { useMemo, useState } from "react";
 
-const App = () => {
-
+function App() {
+    const [search, setSearch] = useState("");
     const [count, setCount] = useState(0);
-    const [number, setNumber] = useState(5);
 
-    const expensiveCalculation = (num) => {
+    const products = [
+        { id: 1, name: "Laptop", price: 50000 },
+        { id: 2, name: "Mobile", price: 20000 },
+        { id: 3, name: "Keyboard", price: 1500 },
+        { id: 4, name: "Mouse", price: 800 },
+        { id: 5, name: "Monitor", price: 12000 }
+    ];
 
-        console.log("Calculation Running");
+    const filteredProducts = useMemo(() => {
+        console.log("Filtering products...");
 
-        let result = 0;
-
-        for (let i = 0; i < 100000000; i++) {
-            result += num;
-        }
-
-        return result;
-    };
-
-    const result = expensiveCalculation(number);
+        return products.filter((product) =>
+            product.name.toLowerCase().includes(search.toLowerCase())
+        );
+    }, [search]);
 
     return (
         <div>
-            <h1>Count: {count}</h1>
+            <h1>Product Search</h1>
 
-            <h2>Result: {result}</h2>
+            <input
+                type="text"
+                placeholder="Search products..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+            />
+
+            <h3>Products:</h3>
+
+            {filteredProducts.map((product) => (
+                <p key={product.id}>
+                    {product.name} - ₹{product.price}
+                </p>
+            ))}
+
+            <hr />
+
+            <h3>Counter: {count}</h3>
 
             <button onClick={() => setCount(count + 1)}>
-                Increase Count
-            </button>
-
-            <button onClick={() => setNumber(number + 1)}>
-                Change Number
+                Increase Counter
             </button>
         </div>
     );
-};
+}
 
 export default App;
