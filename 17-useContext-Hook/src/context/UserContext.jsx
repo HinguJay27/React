@@ -7,9 +7,9 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({
     name: "Jay Hingu",
     email: "jay@example.com",
-    role: "Frontend Developer",
+    role: "Java Full-Stack Developer",
     location: "Gujarat, India",
-    skills: ["React", "JavaScript", "HTML", "CSS"]
+    skills: ["Java","React", "JavaScript", "HTML", "CSS"]
   });
 
   const [darkMode, setDarkMode] = useState(false);
